@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="zh-CN" data-release="public" data-post-office-origin="https://tidal-letters-island.heroicgrackle2.chatgpt.site">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111f2b">
+  <title>潮汐来信 · 像素海岛生活</title>
+  <meta name="description" content="在像素小岛上写日记、种田、钓鱼、做饭和出海的小生活游戏。">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="world.js"></script>
+  <script defer src="cabin.js"></script>
+  <script defer src="ventures.js"></script>
+  <script defer src="survey.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 32 32"><path fill="#ffd07f" d="M12 4h8v2h4v4h2v7H6v-7h2V6h4z"/><path fill="#489e9f" d="M3 17h8v3h10v-3h8v4h-8v3H11v-3H3zm4 8h8v2h9v3h-9v-2H7z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><path d="M9 8h6v2h2v5h-2v2H9v-2H7v-5h2zM11 2h2v4h-2zM11 19h2v3h-2zM2 11h3v2H2zM19 11h3v2h-3zM4 4h3v3H4zm13 0h3v3h-3zM4 17h3v3H4zm13 0h3v3h-3z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M10 3h4v3h-3v8h3v3h7v3h-4v2h-7v-2H6v-4H4V9h2V6h4z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M8 5h8v3h3v3h3v7H2v-7h3V8h3z"/></symbol>
+    <symbol id="i-rain" viewBox="0 0 24 24"><path d="M8 3h8v3h3v3h3v6H2V9h3V6h3zM6 17h2v4H6zm5 2h2v4h-2zm5-2h2v4h-2z"/></symbol>
+    <symbol id="i-storm" viewBox="0 0 24 24"><path d="M7 3h12v2h3v5h-3v2H8v2h9v2h-3v3h-3v3H8v-3h2v-3H5v-2H2v-4h3V8h13V6H7z"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M11 2h2v20h-2zM2 11h20v2H2zM5 4h2v3h3v2H6V7H5zm12 0h2v3h-1v2h-4V7h3zM6 15h4v2H7v3H5v-3h1zm8 0h4v2h1v3h-2v-3h-3z"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M4 5h3v3h3v3h3v2h-3v3H7v3H4zm10 0h3v3h3v3h3v2h-3v3h-3v3h-3z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 2h16v20H4zm3 3v14h2V5zm5 1v2h5V6zm0 5v2h5v-2z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M2 5h20v14H2zm2 2v1l8 6 8-6V7l-8 5z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10 2h4v3h4v3h2v8h2v3H2v-3h2V8h2V5h4zm-3 6v9h10V8h-3V6h-4v2zm3 12h4v3h-4z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M9 2h6v3h3v2h3v4h1v3h-2v4h-3v2h-2v2H9v-2H6v-2H3v-4H2v-3h1V7h3V5h3zm0 7v6h6V9z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M8 2h8v4h3v3h2v13H3V9h2V6h3zm2 2v2h4V4zm-3 8v2h10v-2zm1 4v3h8v-3z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 11h3v3h3v3H7v-3H4zm6 3h3v3h-3zm3-3h3v3h-3zm3-3h3v3h-3zm3-3h3v3h-3z"/></symbol>
+    <symbol id="i-fruit" viewBox="0 0 24 24"><path fill="#78aa54" d="M12 2h7v3h-4v3h-4V5h1z"/><path fill="#b95034" d="M5 8h13v2h3v9h-3v3H6v-3H3v-9h2z"/><path fill="#fa9460" d="M6 9h11v3h3v5h-3v3H6v-3H4v-5h2z"/><path fill="#ffd28c" d="M7 11h4v2H9v3H7z"/></symbol>
+    <symbol id="i-coconut" viewBox="0 0 24 24"><path fill="#387464" d="M6 5h11v2h4v4h2v6h-3v3h-4v2H6v-2H3v-4H1v-5h2V7h3z"/><path fill="#84af58" d="M6 7h11v3h3v7h-4v3H7v-3H4v-6h2z"/><path fill="#c5d27b" d="M7 8h6v3h-3v5H6v-5h1z"/></symbol>
+    <symbol id="i-fish" viewBox="0 0 24 24"><path fill="#3488a3" d="M8 5h8v3h4v3h3v5h-3v3h-4v2H9v-2H6v-3H4v3H1V8h3v3h3V8h1z"/><path fill="#81c9d1" d="M8 9h12v3h2v3h-4v3H8v-3H5v-3h3z"/><path fill="#21354a" d="M17 11h2v2h-2z"/></symbol>
+    <symbol id="i-snapper" viewBox="0 0 24 24"><path fill="#a14e58" d="M8 5h3V2h6v3h3v3h3v8h-3v3h-3v3h-6v-3H7v-3H4v3H1V7h3v4h3V8h1z"/><path fill="#ed8d70" d="M8 10h3V6h7v3h3v6h-3v3H9v-3H5v-3h3z"/><path fill="#ffc68c" d="M10 11h4v2h-4zm3 4h5v2h-5z"/><path fill="#3f3547" d="M17 10h2v2h-2z"/></symbol>
+    <symbol id="i-glass" viewBox="0 0 24 24"><path fill="#698aa1" d="M1 7h3v3h4V8h5V6h5v2h3v3h2v3h-3v2h-5v2H9v-2H4v3H1z"/><path fill="#b8e1df" d="M5 11h13v-2h2v3h2v1h-5v2H8v-2H5z"/><path fill="#eef5dd" d="M9 10h6v1H9zm1 4h6v1h-6z"/><path fill="#314963" d="M18 11h2v2h-2z"/></symbol>
+    <symbol id="i-moonfish" viewBox="0 0 24 24"><path fill="#ad7749" d="M1 4h3v3h3v3h3V7h2V4h3V2h4v3h2v4h2v7h-2v3h-3v3h-6v-3H9v-4H6v4H3v3H1z"/><path fill="#f0b664" d="M3 8h2v3h6V8h3V5h4v3h3v8h-3v3h-5v-3h-2v-3H6v3H3z"/><path fill="#ffed9d" d="M14 6h3v3h2v3h-2v3h-2v2h-2v-5h2z"/><path fill="#633f49" d="M19 10h2v2h-2z"/></symbol>
+    <symbol id="i-soup" viewBox="0 0 24 24"><path fill="#749384" d="M8 2h2v4H8zm6 1h2v4h-2z"/><path fill="#a45c43" d="M2 10h20v6h-3v3h-3v2H8v-2H5v-3H2z"/><path fill="#f7aa5f" d="M5 8h14v2h3v3H2v-3h3z"/><path fill="#ffdd93" d="M5 10h14v2H5z"/><path fill="#db8460" d="M5 14h14v2H5z"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3 9h5l5-5v16l-5-5H3zm13-1h2v8h-2zm4-3h2v14h-2z"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M3 9h5l5-5v16l-5-5H3zm13 0h2v2h-2zm2 2h2v2h-2zm2-2h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5h3v3h3v3h2V8h3V5h3v3h-3v3h-3v2h3v3h3v3h-3v-3h-3v-3h-2v3H8v3H5v-3h3v-3h3v-2H8V8H5z"/></symbol>
+    <symbol id="i-boat" viewBox="0 0 24 24"><path d="M8 3h9v3h3v5h3v3h-2v3h-3v3H6v-3H4v-3H1v-3h5V6h2zm1 4v4h7V7z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-crop" viewBox="0 0 24 24"><path fill="#87505e" d="M7 5h9v3h3v7h-3v4h-5v3H6v-4H3v-6h2V8h2z"/><path fill="#dc8a72" d="M7 9h9v5h-4v4H8v2H6v-5H5v-3h2z"/><path fill="#6a9659" d="M11 2h6v3h-3v3h-3z"/><path fill="#f2a886" d="M8 10h4v2H8z"/></symbol>
+    <symbol id="i-melon" viewBox="0 0 24 24"><path fill="#365c4f" d="M7 4h11v3h4v5h1v5h-3v3h-4v2H7v-2H3v-4H1v-5h3V7h3z"/><path fill="#6da85a" d="M7 7h10v2h4v7h-3v4H7v-3H4v-6h3z"/><path fill="#abd27e" d="M10 7h3v4h-2v5h2v4h-3v-4H8v-6h2zm6 1h2v6h-1v4h-2v-5h1z"/></symbol>
+    <symbol id="i-pumpkin" viewBox="0 0 24 24"><path fill="#925345" d="M5 8h4V6h7v2h5v3h2v7h-3v3H5v-2H2v-7h3z"/><path fill="#ed9a54" d="M5 11h5V8h5v3h5v6h-3v3H7v-2H4v-5h1z"/><path fill="#ffc578" d="M10 10h4v9h-4zM6 12h2v5H6zm11 0h2v5h-2z"/><path fill="#658656" d="M12 2h5v2h-2v4h-3z"/></symbol>
+    <symbol id="i-radish" viewBox="0 0 24 24"><path fill="#54785d" d="M6 2h4v4h2V2h3v5h3V4h3v4h-3v3H7V7H5V4h1z"/><path fill="#9bb07a" d="M7 3h2v6H7zm6 0h1v7h-1zm5 3h2v2h-2z"/><path fill="#b4abb0" d="M7 10h11v3h-2v4h-3v4H9v2H6v-5h1z"/><path fill="#fff1d2" d="M8 11h8v3h-3v4h-3v3H7v-4h1z"/></symbol>
+    <symbol id="i-seed-packet" viewBox="0 0 24 24"><path fill="#765850" d="M4 3h16v17h-2v2H5v-2H3V5h1z"/><path fill="#ead2a6" d="M5 5h14v15H5z"/><path fill="#bd956a" d="M5 6h14v2H5zm0 11h14v2H5z"/></symbol>
+    <symbol id="i-seed" viewBox="0 0 24 24"><use href="#i-seed-packet"/><path fill="#9c5861" d="M9 11h7v3h-2v3H8v-4h1z"/><path fill="#d99375" d="M10 12h4v2h-2v2H9v-3h1z"/></symbol>
+    <symbol id="i-melon-seed" viewBox="0 0 24 24"><use href="#i-seed-packet"/><path fill="#548262" d="M8 12h3v-2h4v2h2v4H7v-3h1z"/><path fill="#96bd74" d="M10 12h2v3h-2zm4 0h2v3h-2z"/></symbol>
+    <symbol id="i-pumpkin-seed" viewBox="0 0 24 24"><use href="#i-seed-packet"/><path fill="#c57b46" d="M8 12h3v-2h3v2h3v4H7v-3h1z"/><path fill="#ffbf72" d="M11 12h3v4h-3z"/></symbol>
+    <symbol id="i-radish-seed" viewBox="0 0 24 24"><use href="#i-seed-packet"/><path fill="#6a9369" d="M10 9h2v2h1V9h3v4h-6z"/><path fill="#fdf2ce" d="M9 12h7v2h-3v2h-3v1H8v-3h1z"/></symbol>
+    <symbol id="i-compost" viewBox="0 0 24 24"><path fill="#734b42" d="M8 2h9v3h-2v3h3v3h2v2h2v6h-3v3H5v-2H2v-6h2v-3h3V8h3V5H8z"/><path fill="#c59666" d="M9 8h7v3h3v3h2v4h-3v2H5v-2H4v-4h2v-2h3z"/><path fill="#7ca270" d="M13 11h5v3h-4v2h-3v-2h2z"/><path fill="#f2c88c" d="M8 15h2v3H8zm2-11h5v2h-5z"/></symbol>
+    <symbol id="i-shell" viewBox="0 0 24 24"><path fill="#a65f60" d="M8 3h8v2h4v3h2v7h-3v3h-3v3H8v-3H5v-3H2V9h2V6h4z"/><path fill="#edab8e" d="M7 7h3V5h6v2h4v7h-3v3h-3v3h-4v-3H7v-3H4V9h3z"/><path fill="#ffddb1" d="M8 8h2v5h2v4h-2v-3H8zm6-2h2v6h-2zm3 3h2v3h-2z"/></symbol>
+    <symbol id="i-seaweed" viewBox="0 0 24 24"><path fill="#467265" d="M10 8h3v4h3V5h2V2h4v6h-3v6h-3v5h-3v3H8v-7H5v-4H2V4h4v3h3v6h1z"/><path fill="#86b871" d="M18 4h2v3h-2v6h-3v6h-2v-5h3V7h2zM4 6h2v3h2v4h2v6H8v-5H6v-4H4z"/></symbol>
+    <symbol id="i-timber" viewBox="0 0 24 24"><path fill="#66483d" d="M2 9h5V6h13l3 3v7l-4 3H4l-3-4V11z"/><path fill="#b47c53" d="M4 10h5V8h10l2 2v4l-3 3H5l-2-3z"/><path fill="#e9bb84" d="M15 10h5v4l-2 2h-4v-4zM4 11h7v2H4z"/><path fill="#926246" d="M16 12h3v2h-3z"/></symbol>
+    <symbol id="i-fruit-bowl" viewBox="0 0 24 24"><path fill="#79504a" d="M2 11h20v4h-2v3h-3v2H7v-2H4v-3H2z"/><path fill="#7d9d61" d="M5 8h4V5h4v6H4z"/><path fill="#f28662" d="M11 7h6v2h3v3h-9z"/><path fill="#ecc887" d="M4 12h16v3h-3v2H7v-2H4z"/><path fill="#f9e6b7" d="M6 12h12v1H6z"/></symbol>
+    <symbol id="i-seaweed-fish" viewBox="0 0 24 24"><path fill="#55786e" d="M2 13h20v5h-4v3H6v-3H2z"/><path fill="#9eb398" d="M4 15h16v3H4z"/><path fill="#a3674f" d="M4 8h4V6h9v2h3v2h3v4h-4v-2h-3v3H7v-2H4z"/><path fill="#ffd197" d="M6 9h10v3H8v-1H6z"/><path fill="#416e50" d="M11 5h2v8h-2zm4 2h2v5h-2z"/></symbol>
+    <symbol id="i-sweet-potato" viewBox="0 0 24 24"><path fill="#84634f" d="M2 13h20v5h-4v2H6v-2H2z"/><path fill="#ead29c" d="M4 15h16v3H4z"/><path fill="#995c68" d="M4 9h4V6h10v2h3v6H5v-2H3V9z"/><path fill="#ffc87c" d="M6 9h11V8h2v4H6z"/></symbol>
+    <symbol id="i-melon-ice" viewBox="0 0 24 24"><path fill="#527b71" d="M5 8h14l-3 11H8z"/><path fill="#c2e2bb" d="M7 10h10l-2 7H9z"/><path fill="#d8676c" d="M6 5h11v7H8V8H6z"/><path fill="#ffe0b4" d="M10 6h2v2h-2zm4 3h2v2h-2z"/><path fill="#fff0c7" d="M11 18h2v3h4v2H7v-2h4z"/></symbol>
+    <symbol id="i-pumpkin-stew" viewBox="0 0 24 24"><path fill="#70544b" d="M0 11h4l2-4h12l2 4h4v3h-3v4h-3v2H6v-2H3v-4H0z"/><path fill="#d08046" d="M5 11h14v6H5z"/><path fill="#f7ba73" d="M7 9h10v3H7z"/><path fill="#81a26c" d="M10 8V6h4v2z"/></symbol>
+    <symbol id="i-radish-soup" viewBox="0 0 24 24"><path fill="#5e7660" d="M2 10h20v5h-2v3h-3v2H7v-2H4v-3H2z"/><path fill="#a7bc87" d="M4 12h16v3h-3v2H7v-2H4z"/><path fill="#fff1c7" d="M7 8h5v4H7zm7 2h4v4h-4z"/><path fill="#709b64" d="M8 6h2v3H8zm7 1h3v3h-3z"/></symbol>
+    <symbol id="i-feed" viewBox="0 0 24 24"><path fill="#7a6548" d="M7 2h11l-1 6h2l3 6v6h-3v2H5v-2H2v-6l4-6h2z"/><path fill="#c7a471" d="M8 9h9l3 5v5h-2v1H6v-1H4v-5z"/><path fill="#76865b" d="M7 7h11v2H7zm2 5h6v2h2v3H7v-3h2z"/><path fill="#f4d399" d="M9 14h2v2H9zm4 1h3v2h-3z"/></symbol>
+    <symbol id="i-egg" viewBox="0 0 24 24"><path fill="#ae8860" d="M9 3h6v2h2v3h2v4h2v6h-3v3H7v-2H4v-5h1v-4h2V6h2z"/><path fill="#f3dfae" d="M10 5h4v2h2v3h2v4h1v3h-2v2H8v-2H6v-4h2V9h2z"/><path fill="#fff3cb" d="M10 8h2v3h-1v4H9v-4h1z"/></symbol>
+    <symbol id="i-duck-egg" viewBox="0 0 24 24"><path fill="#6b8978" d="M10 2h5v2h2v3h2v5h2v6h-3v3H7v-2H4v-5h1v-4h2V6h1V4h2z"/><path fill="#c7dfbf" d="M10 5h5v2h2v3h1v4h1v3h-2v2H8v-2H6v-4h2V9h2z"/><path fill="#e4f0d1" d="M10 8h3v3h-2v4H9v-4h1z"/></symbol>
+    <symbol id="i-coconut-egg" viewBox="0 0 24 24"><path fill="#79725c" d="M2 10h20v6h-2v3h-3v2H7v-2H4v-3H2z"/><path fill="#91a99b" d="M4 13h16v3h-3v3H7v-3H4z"/><path fill="#ffe1a0" d="M5 9h4V7h7v2h3v4H5z"/><path fill="#fff3cd" d="M7 9h5v2H7zm7 1h3v1h-3z"/><path fill="#7ba273" d="M14 6h4v2h-4z"/></symbol>
+    <symbol id="i-seaweed-egg" viewBox="0 0 24 24"><use href="#i-coconut-egg"/><path fill="#39765d" d="M6 7h3V5h3v2h-1v3H8V9H6zm8 1h4V6h2v4h-4v2h-2z"/></symbol>
+    <symbol id="i-fruit-roast" viewBox="0 0 24 24"><path fill="#bfab82" d="M2 10h20v7h-3v3H5v-3H2z"/><path fill="#f8dfa6" d="M4 11h16v5h-3v2H7v-2H4z"/><path fill="#a95d43" d="M4 8h3v2h3V7h7v1h3v5h-3v2h-7v-2H7v2H4z"/><path fill="#e39157" d="M9 10h10v3H9z"/><path fill="#d86348" d="M13 5h4v2h-4z"/><path fill="#629d62" d="M16 4h3v1h-3z"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><path fill="#b87a4c" d="M7 3h11v3h3v3h2v8h-3v3h-4v2H7v-2H4v-3H2V8h2V5h3z"/><path fill="#eeb872" d="M7 6h11v2h3v7h-3v3H7v-2H4V9h3z"/><path fill="#fff1ba" d="M10 8h6v2h-2v6h-4v-3H8v-2h2z"/><path fill="#d18e58" d="M11 12h3v2h-3z"/></symbol>
+  </svg>
+
+  <header class="masthead">
+    <div class="identity">
+      <svg class="brand" aria-hidden="true"><use href="#i-logo"/></svg>
+      <div><h1>潮汐来信</h1><p>在海的那一边，有人在等你的信。</p></div>
+    </div>
+    <div class="header-actions">
+      <button class="quiet alert-button" id="open-alerts" type="button" aria-label="消息提醒"><svg aria-hidden="true"><use href="#i-bell"/></svg><span class="alert-label">消息</span><span id="alert-count" class="alert-count" aria-hidden="true" hidden></span></button>
+      <button class="quiet sound" id="sound" type="button" aria-pressed="false" aria-label="开启音乐和环境音"><svg aria-hidden="true"><use href="#i-mute"/></svg><span>声音</span></button>
+      <button class="quiet settings-button" id="open-settings" type="button" aria-label="游戏设置"><svg aria-hidden="true"><use href="#i-settings"/></svg><span>设置</span></button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="game" aria-label="海岛">
+      <div class="status-bar">
+        <button type="button" class="location" id="rename-island" aria-label="角色与岛屿资料" title="角色与岛屿资料"><i></i><span id="location-name">无名岛</span></button>
+        <div class="clock" aria-label="岛上时间"><span id="season" class="season" title="春季 · 第 1 天">春</span><span id="day">第 1 天</span><span id="island-weekday">周一</span><strong id="time">07:10</strong></div>
+        <div class="weather"><svg aria-hidden="true"><use id="weather-icon" href="#i-sun"/></svg><span id="weather">晴天</span></div>
+        <button class="quiet advance" id="advance" type="button" title="等到下个时段"><svg aria-hidden="true"><use href="#i-next"/></svg><span>等一等</span></button>
+      </div>
+      <div class="scene" id="scene">
+        <canvas id="world" width="896" height="560" aria-label="像素海岛地图。点击地面移动，靠近目标可互动">像素海岛地图</canvas>
+        <div id="arrival" class="arrival" aria-hidden="true" hidden><i></i><i></i><i></i><i></i></div>
+        <div id="toast" class="toast" role="status" hidden></div>
+        <div id="activity" class="activity" role="status" hidden></div>
+        <button id="marker" class="marker" type="button" hidden></button>
+        <button id="resident-turn-in" class="resident-turn-in" type="button" hidden>!</button>
+        <div id="fishing" class="fishing" hidden>
+          <strong id="fishing-text">等待咬钩…</strong>
+          <div class="line-meter" aria-hidden="true"><i id="line-fill"></i></div>
+          <div id="fight-meters" hidden>
+            <div><span>收线</span><div class="line-meter"><i id="reel-fill"></i></div></div>
+            <div><span>张力</span><div class="line-meter tension"><i id="tension-fill"></i></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="control-bar">
+        <div class="key-help"><span><kbd>W A S D</kbd> / <kbd>↑ ↓ ← →</kbd> 移动</span><span><kbd>E</kbd> 互动</span></div>
+        <span class="touch-help">点击岛面移动</span>
+        <div class="game-actions">
+          <button class="quiet" id="walk-harbor" type="button" hidden><svg aria-hidden="true"><use href="#i-boat"/></svg><span>去码头</span></button>
+          <button class="action" id="action" type="button" disabled>靠近目标互动</button>
+        </div>
+      </div>
+      <div class="coastal-links offshore-bar" id="offshore-controls" hidden>
+        <span id="boat-progress"></span>
+        <button class="action" type="button" id="boat-cast">抛竿</button>
+        <button class="action" type="button" id="boat-menu">航次与结算</button>
+      </div>
+    </section>
+
+    <aside class="journal" aria-label="岛上手记">
+      <div class="journal-top"><svg aria-hidden="true"><use href="#i-book"/></svg><h2>岛上手记</h2><button class="journal-task-button" id="open-quests" type="button">任务<span id="quest-badge" hidden></span></button></div>
+      <details class="journal-section island-guide" id="island-guide" open>
+        <summary>初到小岛 <span id="guide-progress">0/3</span></summary>
+        <ul id="tasks" class="tasks">
+          <li data-task="fruit"><span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span> 收集一份水果</li>
+          <li data-task="sale"><span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span> 卖一份水果给行商</li>
+          <li data-task="post"><span class="check"><svg aria-hidden="true"><use href="#i-check"/></svg></span> 攒到 12 贝币，启用邮局</li>
+        </ul>
+        <p id="guide-next" class="guide-next">先在岛上摘些椰子和海岛果。</p>
+      </details>
+      <section class="journal-section">
+        <h3><svg aria-hidden="true"><use href="#i-bag"/></svg> 背包</h3>
+        <div class="stamina"><span>体力</span><meter id="stamina" aria-label="体力" min="0" max="100" value="100"></meter><strong id="stamina-value">100</strong></div>
+        <ul class="inventory" id="inventory-slots">
+          <li><button type="button" data-eat="coconut"><svg aria-hidden="true"><use href="#i-coconut"/></svg><span>椰子</span><strong id="coconut-count">0</strong></button></li>
+          <li><button type="button" data-eat="fruit"><svg aria-hidden="true"><use href="#i-fruit"/></svg><span>海岛果</span><strong id="fruit-count">0</strong></button></li>
+          <li data-unlock="fishing" hidden><button type="button" data-eat="fish"><svg aria-hidden="true"><use href="#i-fish"/></svg><span>蓝鳍鱼</span><strong id="fish-count">0</strong></button></li>
+          <li data-unlock="cooking" hidden><button type="button" data-eat="soup"><svg aria-hidden="true"><use href="#i-soup"/></svg><span>鱼汤</span><strong id="soup-count">0</strong></button></li>
+        </ul>
+        <dl class="supplies">
+          <div data-unlock="farming" hidden><dt><span id="seed-visual"></span><span id="seed-label">甜薯种子</span></dt><dd id="seed-count">0</dd></div>
+          <div data-unlock="farming" hidden><dt data-item-icon="compost">堆肥</dt><dd id="compost-count">0</dd></div>
+          <div data-unlock="farming" hidden><dt data-item-icon="crop"><button class="setup-link crop-button" type="button" data-eat="crop">甜薯</button></dt><dd id="crop-count">0</dd></div>
+          <div id="shell-stock" hidden><dt data-item-icon="shell">古贝</dt><dd id="shell-count">0</dd></div>
+          <div id="seaweed-stock" hidden><dt data-item-icon="seaweed">海藻</dt><dd id="seaweed-count">0</dd></div>
+          <div id="timber-stock" hidden><dt data-item-icon="timber">浮木</dt><dd id="timber-count">0</dd></div>
+          <div id="feed-stock" hidden><dt data-item-icon="feed">饲料</dt><dd id="feed-count">0</dd></div>
+          <div><dt data-item-icon="coin">贝币</dt><dd id="coin-count">8</dd></div>
+        </dl>
+        <div class="journal-links">
+          <div class="compost-access" id="compost-access" hidden>
+            <button type="button" class="setup-link" id="walk-compost" aria-describedby="compost-status">田边堆肥箱</button>
+            <span id="compost-status">今日可领 1 份</span>
+          </div>
+          <button class="setup-link" id="open-catalog" type="button" data-unlock="fishing" hidden>水产图鉴</button>
+          <button class="setup-link" id="open-projects" type="button" data-unlock="building" hidden>岛建计划</button>
+          <button class="setup-link" id="walk-coop" type="button" hidden>走向畜舍</button>
+        </div>
+        <div id="species-stock" class="species-stock"></div>
+        <div class="journal-links market-visit" id="market-visit">
+          <p class="market-status" id="market-status"></p>
+          <button class="setup-link" id="walk-market" type="button" hidden>走向摊位</button>
+          <button class="setup-link" id="wait-market" type="button" hidden>等到行商登岛</button>
+        </div>
+      </section>
+      <section class="journal-section" id="island-calendar" hidden>
+        <h3>岛上周历</h3>
+        <p id="calendar-line"></p>
+        <div class="coastal-links">
+          <button class="setup-link" id="walk-club" type="button" hidden>去东岬俱乐部</button>
+          <button class="setup-link" id="walk-restaurant" type="button" hidden>去海边餐厅</button>
+          <button class="setup-link" id="walk-crab-trap" type="button" hidden>去南岸蟹笼</button>
+          <button class="setup-link" id="open-ledger" type="button">经营账本</button>
+        </div>
+      </section>
+      <section class="journal-section post-section" data-unlock="post" hidden>
+        <h3><svg aria-hidden="true"><use href="#i-mail"/></svg> 海鸟邮局</h3>
+        <p id="post-status">海鸟在栈桥等来信。</p>
+        <div class="journal-links post-links">
+          <button class="post-button" id="post" type="button">走向栈桥 <span aria-hidden="true">↗</span></button>
+          <button class="setup-link" id="open-contacts" type="button">通讯录</button>
+          <button class="setup-link" id="connect-deepseek" type="button" hidden>连接 DeepSeek</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer><span id="scene-help">点击树木、木屋或栈桥，也可以走过去互动。</span><span id="save-status">进度自动保存在本机</span></footer>
+
+  <dialog id="letter-dialog" aria-labelledby="letter-title">
+    <div class="letter-head"><h2 id="letter-title">海鸟邮局</h2><button type="button" id="close-letter" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div id="incoming" hidden></div>
+    <form id="letter-form" hidden>
+      <p id="mail-mode"></p>
+      <label for="letter-recipient">收信人</label>
+      <select id="letter-recipient"></select>
+      <label for="letter-text">写一封回信</label>
+      <textarea id="letter-text" rows="4" maxlength="160" required placeholder="你好。我在一座小岛上，今天的海……"></textarea>
+      <button type="submit" class="action">请海鸥送信</button>
+    </form>
+  </dialog>
+  <dialog id="quests-dialog" aria-labelledby="quests-title">
+    <div class="letter-head"><h2 id="quests-title">岛上任务</h2><button type="button" id="close-quests" class="quiet" aria-label="关闭任务"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div id="quest-tabs" class="quest-tabs" role="group" aria-label="任务类型">
+      <button type="button" aria-pressed="true" data-quest-tab="residents">委托板</button>
+      <button type="button" aria-pressed="false" data-quest-tab="daily">今日小事</button>
+      <button type="button" aria-pressed="false" data-quest-tab="island">岛屿旅程</button>
+    </div>
+    <p id="quest-intro"></p>
+    <p id="quest-feedback" role="status"></p>
+    <ul id="quest-list" class="quest-list"></ul>
+  </dialog>
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <div class="letter-head"><h2 id="settings-title">游戏设置</h2><button type="button" id="close-settings" class="quiet" aria-label="关闭设置"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <section class="settings-section">
+      <div class="settings-heading"><h3>声音</h3><button class="quiet" id="settings-sound" type="button" aria-pressed="false">开启声音</button></div>
+      <div class="setting-range"><label for="music-level">背景音乐</label><input type="range" id="music-level" min="0" max="100" step="5" value="100"><output for="music-level" id="music-value">100%</output></div>
+      <div class="setting-range"><label for="ambient-level">海浪与天气</label><input type="range" id="ambient-level" min="0" max="100" step="5" value="100"><output for="ambient-level" id="ambient-value">100%</output></div>
+      <div class="setting-range"><label for="effects-level">操作音效</label><input type="range" id="effects-level" min="0" max="100" step="5" value="100"><output for="effects-level" id="effects-value">100%</output></div>
+    </section>
+    <section class="settings-section">
+      <h3>游玩节奏</h3>
+      <div class="setting-select"><label for="time-pace">岛上时间</label><select id="time-pace"><option value="slow">悠闲 · 0.5 倍</option><option value="normal">标准 · 1 倍</option><option value="fast">轻快 · 2 倍</option></select></div>
+      <div class="setting-select"><label for="motion-pref">画面动画</label><select id="motion-pref"><option value="system">跟随系统</option><option value="full">完整动画</option><option value="reduced">减少动画</option></select></div>
+    </section>
+    <div class="settings-footer"><span id="settings-feedback" role="status">偏好会自动保存</span><button class="setup-link" id="restore-settings" type="button">恢复默认设置</button></div>
+    <section class="settings-section settings-about" aria-labelledby="about-title">
+      <div class="settings-heading"><h3 id="about-title">关于游戏</h3><span id="game-version" class="game-version"></span></div>
+      <p>开发者 · 潮汐来信</p>
+      <details class="update-notes"><summary>更新日志</summary><ol id="update-log"></ol></details>
+    </section>
+    <section class="settings-section settings-reset" aria-labelledby="save-settings-title">
+      <div class="settings-heading"><h3 id="save-settings-title">岛屿存档</h3><button class="danger-button" id="settings-reset" type="button">炸岛重开</button></div>
+    </section>
+  </dialog>
+  <dialog id="contacts-dialog" aria-labelledby="contacts-title">
+    <div class="letter-head"><h2 id="contacts-title">通讯录</h2><button type="button" id="close-contacts" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="contacts-note" role="status"></p>
+    <ul class="contacts" id="contact-list"></ul>
+  </dialog>
+  <dialog id="farm-dialog" aria-labelledby="farm-title">
+    <div class="letter-head"><h2 id="farm-title">田地</h2><button type="button" id="close-farm" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="farm-season"></p>
+    <p id="farm-status"></p>
+    <div id="farm-actions" class="farm-actions"></div>
+    <button type="button" class="setup-link" id="farm-compost" hidden>去田边堆肥箱领取</button>
+    <p id="farm-compost-empty" hidden>今天的堆肥已领完，田边堆肥箱明天会补充。</p>
+    <p id="farm-note" role="status"></p>
+  </dialog>
+  <dialog id="alerts-dialog" aria-labelledby="alerts-title">
+    <div class="letter-head"><h2 id="alerts-title">岛上消息</h2><button type="button" id="close-alerts" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="alerts-toolbar">
+      <span id="alerts-unread" role="status">暂无未读</span>
+      <button type="button" class="quiet" id="read-alerts" disabled>全部标为已读</button>
+    </div>
+    <p id="alerts-empty">岛上一切平静。新回信和突发事件会出现在这里。</p>
+    <ul class="alert-list" id="alert-list"></ul>
+  </dialog>
+  <dialog id="name-dialog" aria-labelledby="name-title">
+    <div class="letter-head"><h2 id="name-title">角色与岛屿</h2><button type="button" id="skip-name" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <form id="name-form">
+      <p id="name-intro">云雾散开，你来到一座小岛。把角色和岛屿资料记在海图上。</p>
+      <div class="profile-role">
+        <div><label for="player-name">角色名字</label><input id="player-name" type="text" required maxlength="16" autocomplete="off" placeholder="例如，小潮"></div>
+        <img id="avatar-preview" alt="角色形象预览" width="54" height="54">
+      </div>
+      <div class="profile-fields">
+        <div><label for="player-birthday">角色生日</label><input id="player-birthday" type="date" required></div>
+        <div><label for="player-gender">性别</label><select id="player-gender"><option value="">不填写</option><option value="female">女</option><option value="male">男</option><option value="other">其他</option></select></div>
+      </div>
+      <label for="island-name">小岛名字</label>
+      <input id="island-name" type="text" maxlength="14" autocomplete="off" placeholder="无名岛">
+      <p class="profile-note">角色资料和游玩设备记录保存在本机浏览器。</p>
+      <button type="submit" class="action">记在海图上</button>
+    </form>
+    <section id="play-profile" class="play-profile" hidden aria-label="岛屿和游玩记录">
+      <dl><div><dt>岛屿 ID</dt><dd id="island-id"></dd></div><div><dt>游玩设备</dt><dd id="device-name"></dd></div></dl>
+      <h3>游玩记录</h3>
+      <p id="play-summary"></p>
+      <ul id="play-history"></ul>
+      <button type="button" id="reset-game" class="setup-link reset-game">重置我的岛屿</button>
+    </section>
+  </dialog>
+  <dialog id="reset-dialog" role="alertdialog" aria-labelledby="reset-title" aria-describedby="reset-warning">
+    <div class="letter-head"><h2 id="reset-title">确定要炸岛重开吗？</h2></div>
+    <p id="reset-warning">这会永久清除当前浏览器的小岛存档，包括角色、背包、日记、信件和建设进度。转场结束后，你需要重新填写资料，新岛会有新的岛屿 ID。</p>
+    <p id="reset-error" role="alert" hidden></p>
+    <div class="reset-actions">
+      <button type="button" id="cancel-reset" class="quiet" autofocus>保留小岛</button>
+      <button type="button" id="confirm-reset" class="danger-button confirm-danger">确认炸岛</button>
+    </div>
+  </dialog>
+  <dialog id="fish-dialog" aria-labelledby="fish-title">
+    <div class="letter-head"><h2 id="fish-title">水产图鉴</h2><button type="button" id="close-catalog" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div id="catalog-tabs" class="quest-tabs" role="group" aria-label="图鉴分类">
+      <button type="button" data-catalog="fish" aria-pressed="true">鱼类</button>
+      <button type="button" data-catalog="crab" aria-pressed="false">蟹类</button>
+    </div>
+    <p id="catalog-summary"></p>
+    <ul class="fish-catalog" id="catalog-list"></ul>
+  </dialog>
+  <dialog id="market-dialog" aria-labelledby="market-title">
+    <div class="letter-head"><h2 id="market-title">行商小舟</h2><button type="button" id="close-market" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p>你的贝币 <strong id="market-coins">0</strong></p>
+    <p id="trade-empty" hidden>目前没有可交易的物品。</p>
+    <ul class="trade-list" id="trade-list"></ul>
+    <p id="trade-note" role="status"></p>
+  </dialog>
+  <dialog id="sail-dialog" aria-labelledby="sail-title">
+    <div class="letter-head"><h2 id="sail-title">船家的航图</h2><button type="button" id="close-sail" class="quiet" aria-label="关闭航图"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="sea-chart">
+      <canvas id="sailing-chart" width="384" height="176" aria-hidden="true"></canvas>
+      <span id="chart-east-bay" class="chart-annotation" hidden></span>
+      <div id="sail-stops" class="chart-stops" aria-label="选择目的地"></div>
+    </div>
+    <div class="sail-description" aria-live="polite">
+      <h3 id="sail-destination"></h3>
+      <p id="sail-info"></p>
+      <span id="sail-cost"></span>
+    </div>
+    <div class="sail-actions">
+      <span id="sail-funds"></span>
+      <button id="sail-go" class="action" type="button">登船</button>
+    </div>
+  </dialog>
+  <dialog id="connect-dialog" aria-labelledby="connect-title">
+    <div class="letter-head"><h2 id="connect-title">连接 DeepSeek</h2><button type="button" id="close-connect" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <form id="connect-form">
+      <p>密钥仅保留在本机服务内存里。启用后，寄给岛外角色的信会发给 DeepSeek。主动送来的家书使用游戏内的天气和进度。和居民聊天时会发送你的话、近期台词和岛上天气。</p>
+      <label for="deepseek-key">DeepSeek API Key</label>
+      <input id="deepseek-key" type="password" required spellcheck="false" autocomplete="off" maxlength="256">
+      <p id="connect-note" role="status"></p>
+      <button id="connect-submit" type="submit" class="action">保存并启用</button>
+    </form>
+  </dialog>
+  <dialog id="cook-dialog" aria-labelledby="cook-title">
+    <div class="letter-head"><h2 id="cook-title">小灶台</h2><button type="button" id="close-cook" class="quiet" aria-label="关闭"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="recipe-count"></p>
+    <ul id="recipe-list" class="life-list"></ul>
+    <p id="cook-note">做一道菜消耗 5 点体力。</p>
+  </dialog>
+  <dialog id="desk-dialog" aria-labelledby="desk-title">
+    <div class="letter-head"><h2 id="desk-title">窗边书桌</h2><button type="button" id="close-desk" class="quiet" aria-label="关闭书桌"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="life-actions">
+      <button type="button" id="desk-diary" class="action">写日记</button>
+      <button type="button" id="desk-letters" class="quiet">翻阅信件</button>
+    </div>
+  </dialog>
+  <dialog id="diary-dialog" aria-labelledby="diary-title">
+    <div class="letter-head"><h2 id="diary-title">海岛日记</h2><button type="button" id="close-diary" class="quiet" aria-label="关闭日记"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="setting-select"><label for="diary-day">日期</label><select id="diary-day"></select></div>
+    <form id="diary-form">
+      <label for="diary-text">日记正文</label>
+      <textarea id="diary-text" rows="7" maxlength="1200" required placeholder="记下今天在岛上发生的小事……"></textarea>
+      <div class="life-actions"><button type="submit" id="save-diary" class="action">保存日记</button><span id="diary-note" role="status"></span></div>
+    </form>
+  </dialog>
+  <dialog id="resident-dialog" aria-labelledby="resident-name">
+    <div class="letter-head"><h2 id="resident-name"></h2><button type="button" id="close-resident" class="quiet" aria-label="结束对话"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="resident-player-line" hidden></p>
+    <div class="resident-speaking"><img id="resident-portrait" width="52" height="52" alt=""><p id="resident-line" aria-live="polite"></p></div>
+    <div class="life-actions">
+      <button type="button" id="resident-topic" class="quiet"></button>
+      <button type="button" id="resident-shop" class="quiet">看看货品</button>
+    </div>
+    <form id="resident-chat-form" hidden>
+      <label for="resident-chat-text">和居民聊几句</label>
+      <div class="resident-chat-input">
+        <input id="resident-chat-text" type="text" maxlength="100" autocomplete="off" placeholder="今天的海风真舒服……" required>
+        <button id="resident-chat-send" type="submit" class="action">发送</button>
+      </div>
+    </form>
+    <p id="resident-chat-note" role="status"></p>
+    <div id="resident-offers" aria-label="居民委托"></div>
+  </dialog>
+  <dialog id="projects-dialog" aria-labelledby="projects-title">
+    <div class="letter-head"><h2 id="projects-title">岛建计划</h2><button type="button" id="close-projects" class="quiet" aria-label="关闭岛建"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="projects-location"></p>
+    <ul id="project-list" class="life-list"></ul>
+    <section id="expansion-loan" class="life-offer" aria-label="扩岛贷款" hidden></section>
+    <p id="project-note" role="status"></p>
+  </dialog>
+  <dialog id="coop-dialog" aria-labelledby="coop-title">
+    <div class="letter-head"><h2 id="coop-title">西岸畜舍</h2><button type="button" id="close-coop" class="quiet" aria-label="关闭畜舍"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="coop-stock"></p>
+    <button id="coop-upgrade" class="setup-link" type="button">查看西岸畜舍扩建</button>
+    <ul id="coop-list" class="life-list"></ul>
+    <div id="coop-incubator" hidden></div>
+    <div id="coop-breeding" hidden></div>
+    <div class="life-offer">
+      <h3>拌饲料</h3>
+      <p>用 1 份海岛果或作物配 2 份饲料。</p>
+      <button id="make-feed" class="quiet" type="button">配饲料</button>
+    </div>
+    <p id="coop-note" role="status"></p>
+  </dialog>
+  <dialog id="club-dialog" class="coastal-dialog" aria-labelledby="club-title">
+    <div class="letter-head"><h2 id="club-title">东岬垂钓俱乐部</h2><button type="button" id="close-club" class="quiet" aria-label="关闭俱乐部"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div id="club-content"></div>
+  </dialog>
+  <dialog id="restaurant-dialog" class="coastal-dialog" aria-labelledby="restaurant-title">
+    <div class="letter-head"><h2 id="restaurant-title">海边餐厅</h2><button type="button" id="close-restaurant" class="quiet" aria-label="关闭餐厅"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p id="dining-status"></p>
+    <form id="restaurant-name-form">
+      <label for="restaurant-name">餐厅名称</label>
+      <div class="coastal-links"><input id="restaurant-name" required maxlength="18" placeholder="海边餐厅"><button class="action" type="submit">保存名称</button></div>
+    </form>
+    <p id="dining-feedback" role="status"></p>
+    <div id="dining-counter"></div>
+    <section aria-label="菜单和备菜">
+      <div class="coastal-links">
+        <h3>菜单和备菜</h3>
+        <button class="setup-link" type="button" id="dining-cookbook">去灶台查看食谱</button>
+        <button class="setup-link" type="button" id="dining-backpack">查看背包</button>
+      </div>
+      <div id="dining-menu"></div>
+    </section>
+  </dialog>
+  <dialog id="ledger-dialog" class="coastal-dialog" aria-labelledby="ledger-title">
+    <div class="letter-head"><h2 id="ledger-title">经营账本</h2><button type="button" id="close-ledger" class="quiet" aria-label="关闭账本"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div id="ledger-content"></div>
+  </dialog>
+  <dialog id="research-dialog" class="coastal-dialog" aria-labelledby="research-title">
+    <div class="letter-head"><h2 id="research-title">洄湾水产研究所</h2><button type="button" id="close-research" class="quiet" aria-label="关闭研究所"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p>林澜 · 水产专家</p>
+    <p id="research-note" role="status"></p>
+    <div id="research-content"></div>
+  </dialog>
+</body>
+</html>
